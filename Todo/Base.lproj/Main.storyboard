@@ -32,6 +32,9 @@
                     <navigationItem key="navigationItem" title="Todo" id="eLh-ny-H4h">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5IZ-4R-bN8">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addButtonPressed:" destination="3gA-Vg-Ksm" id="qSM-2n-hMD"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
