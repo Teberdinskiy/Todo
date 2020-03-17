@@ -12,9 +12,16 @@ class TodoListViewController: UITableViewController {
     
     var itemArray = ["Найти собаку", "Прочитать книгу", "Сходить в магазин"]
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        // Show new items
+        if let items = defaults.array(forKey: "TodoListArray") as? [String] {
+            itemArray = items
+        }
+        
     }
     
     //MARK: - TableView Datasource Methods
@@ -56,11 +63,17 @@ class TodoListViewController: UITableViewController {
         let alert = UIAlertController(title: "Добавить новый элемент", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Добавить", style: .default) { (action) in
-            // what will happen once the user clicks "Add Item "
+            
+            // Add new item
             self.itemArray.append(textField.text!)
             
+            // Save updated item array
+            self.defaults.set(self.itemArray, forKey: "TodoListArray")
+            
+            // Reloads the rows and sections of the table view. New item displayed
             self.tableView.reloadData()
         }
+        
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Создать новый элемент"
             textField = alertTextField
