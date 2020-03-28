@@ -19,7 +19,6 @@ class TodoListViewController: UITableViewController {
         super.viewDidLoad()
         
         
-        
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
         
